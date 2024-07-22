@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 interface AuthInputProps {
   label: string;
   name: string;
@@ -13,6 +15,7 @@ const AuthInput = ({
   type,
   size,
 }: AuthInputProps) => {
+  const [value, setValue] = useState("");
   return (
     <div>
       {type === "password" ? (
@@ -36,7 +39,9 @@ const AuthInput = ({
         type={type}
         name={name}
         placeholder={placeholder}
-        className={`border border-[#36373B] text-gray-900 mt-1 bg-[#26292D] placeholder-[#7F8084]  text-sm rounded-sm block w-full p-2.5 input-sm ${size} `}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        className={`border border-[#36373B] text-white mt-1 bg-[#26292D] placeholder-[#7F8084]  text-sm rounded-sm block w-full p-2.5 input-sm ${size} `}
       />
     </div>
   );
